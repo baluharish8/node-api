@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: false}))
 
 
 
-app.get('/products', async(req, res) => {
+app.get('/users', async(req, res) => {
     try {
         const products = await Product.find({});
         res.status(200).json(products);
@@ -21,7 +21,7 @@ app.get('/products', async(req, res) => {
     }
 })
 
-app.get('/products/:id', async(req, res) =>{
+app.get('/users/:id', async(req, res) =>{
     try {
         const {id} = req.params;
         const product = await Product.findById(id);
@@ -32,7 +32,7 @@ app.get('/products/:id', async(req, res) =>{
 })
 
 
-app.post('/products', async(req, res) => {
+app.post('/users', async(req, res) => {
     try {
         const product = await Product.create(req.body)
         res.status(200).json(product);
@@ -44,7 +44,7 @@ app.post('/products', async(req, res) => {
 })
 
 // update a product
-app.put('/products/:id', async(req, res) => {
+app.put('/users/:id', async(req, res) => {
     try {
         const {id} = req.params;
         const product = await Product.findByIdAndUpdate(id, req.body);
@@ -62,7 +62,7 @@ app.put('/products/:id', async(req, res) => {
 
 // delete a product
 
-app.delete('/products/:id', async(req, res) =>{
+app.delete('/users/:id', async(req, res) =>{
     try {
         const {id} = req.params;
         const product = await Product.findByIdAndDelete(id);
